@@ -1,0 +1,20 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+
+<% if user_signed_in? %>
+  <p>Welcome <%= current_user.email %></p>
+  <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
+<% else %>
+  <p>You are not signed in.</p>
+  <%= link_to 'Login', new_user_session_path %>
+<% end %>
+
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
