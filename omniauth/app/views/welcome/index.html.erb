@@ -3,18 +3,14 @@
 
 
 <% if user_signed_in? %>
-  <p>Welcome <%= current_user.email %></p>
-  <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
+  <p>Welcome <%= current_user.name %></p>
+  <img src= <%= current_user.image %>>
+  <%= link_to 'Log out', destroy_user_session_get_path, :method => :delete %>
 <% else %>
   <p>You are not signed in.</p>
-  <%= link_to 'Login', new_user_session_path %>
+  <%= link_to 'Login', user_omniauth_authorize_path(:facebook) %>
 <% end %>
 
-<div id="user-widget">
-  <% if current_user %>
-    Welcome <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
+<!-- 
+<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<%= link_to 'Logged In [click to logout]', destroy_user_session_get_path %> -->
