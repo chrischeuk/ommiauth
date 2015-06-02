@@ -3,8 +3,8 @@
 
 
 <% if user_signed_in? %>
-  <p>Welcome <%= current_user.name %></p>
   <img src= <%= current_user.image %>>
+  <p>Welcome <%= current_user.name %></p>
   <%= link_to 'Log out', destroy_user_session_get_path, :method => :delete %>
 <% else %>
   <p>You are not signed in.</p>
